@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ElecZoomer - Electronics Store</title>
+  <title>Product Detail - ElecZoomer</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -85,88 +85,158 @@
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content container">
-      <h1>Next-Gen Tech, <span>Unbeatable Prices</span></h1>
-      <p>Discover the latest electronics and cutting-edge technology from top brands around the world.</p>
-      <div class="hero-buttons">
-        <a href="products.html" class="btn btn-primary">Shop Now</a>
-        <a href="products.html?category=Laptops" class="btn btn-outline">Explore Deals</a>
-      </div>
+  <!-- Product Detail Content -->
+  <main class="container product-detail-page">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fas fa-chevron-right"></i>
+      <a href="products.html">Products</a>
+      <i class="fas fa-chevron-right"></i>
+      <span id="categoryBreadcrumb">Category</span>
+      <i class="fas fa-chevron-right"></i>
+      <span class="current" id="productName">Product Name</span>
     </div>
-  </section>
 
-  <!-- Featured Products Section -->
-  <section class="featured-products container">
-    <div class="section-header">
-      <div>
-        <h2>Featured Products</h2>
-        <p>Explore our handpicked selection of premium electronics, chosen for their exceptional performance and value.</p>
-      </div>
-      <a href="products.html" class="btn btn-outline">View All <i class="fas fa-arrow-right"></i></a>
+    <div class="product-not-found" id="productNotFound">
+      <h1>Product Not Found</h1>
+      <p>The product you're looking for doesn't exist or has been removed.</p>
+      <a href="products.html" class="btn btn-primary">View All Products</a>
     </div>
-    <div class="products-grid" id="featuredProducts">
-      <!-- Products will be loaded here via JavaScript -->
-    </div>
-  </section>
 
-  <!-- Why Shop With Us Section -->
-  <section class="why-shop-section">
-    <div class="container">
-      <h2>Why Shop With Us</h2>
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="benefit-icon">
+    <div class="product-detail" id="productDetail">
+      <div class="product-images">
+        <div class="main-image">
+          <img src="" alt="Product" id="mainImage">
+        </div>
+        <div class="image-thumbnails" id="imageThumbnails">
+          <!-- Thumbnails will be added here dynamically -->
+        </div>
+      </div>
+
+      <div class="product-info">
+        <h1 id="detailProductName">Product Name</h1>
+        
+        <div class="product-rating">
+          <div class="stars" id="productStars">
+            <!-- Stars will be added here dynamically -->
+          </div>
+          <span id="productRating">4.5</span>
+          <span class="reviews-count">(<span id="reviewCount">120</span> reviews)</span>
+        </div>
+        
+        <div class="product-price">
+          <span class="current-price" id="productPrice">$999.99</span>
+          <span class="original-price" id="originalPrice">$1299.99</span>
+          <span class="discount" id="discountTag">Save $300.00</span>
+        </div>
+        
+        <p class="product-description" id="productDescription">
+          Description will be loaded here.
+        </p>
+        
+        <div class="product-meta">
+          <div class="meta-item">
+            <span class="meta-label">Status:</span>
+            <span class="meta-value" id="stockStatus"><i class="fas fa-check"></i> In Stock</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Category:</span>
+            <a href="#" class="meta-value category-link" id="productCategory">Category</a>
+          </div>
+        </div>
+        
+        <div class="quantity-selector">
+          <span class="meta-label">Quantity:</span>
+          <div class="quantity-controls">
+            <button id="decreaseQuantity">-</button>
+            <span id="quantityValue">1</span>
+            <button id="increaseQuantity">+</button>
+          </div>
+        </div>
+        
+        <div class="product-actions">
+          <button class="btn btn-primary" id="addToCartBtn">
+            <i class="fas fa-shopping-cart"></i> Add to Cart
+          </button>
+          <button class="btn btn-icon">
+            <i class="fas fa-heart"></i>
+          </button>
+          <button class="btn btn-icon">
+            <i class="fas fa-share"></i>
+          </button>
+        </div>
+        
+        <div class="shipping-info">
+          <div class="info-item">
             <i class="fas fa-truck"></i>
+            <div class="info-text">
+              <span class="info-title">Free Shipping</span>
+              <span class="info-subtitle">On orders over $50</span>
+            </div>
           </div>
-          <h3>Free Shipping</h3>
-          <p>On all orders over $50. International shipping available on select products.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">
+          <div class="info-item">
+            <i class="fas fa-sync"></i>
+            <div class="info-text">
+              <span class="info-title">30-Day Returns</span>
+              <span class="info-subtitle">Hassle-free returns</span>
+            </div>
+          </div>
+          <div class="info-item">
             <i class="fas fa-shield-alt"></i>
+            <div class="info-text">
+              <span class="info-title">Warranty</span>
+              <span class="info-subtitle">1 year warranty</span>
+            </div>
           </div>
-          <h3>Warranty Protection</h3>
-          <p>All products come with a minimum 1-year warranty, with extended options available.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">
-            <i class="fas fa-box"></i>
-          </div>
-          <h3>30-Day Returns</h3>
-          <p>Not satisfied? Return any product within 30 days for a full refund, no questions asked.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">
-            <i class="fas fa-credit-card"></i>
-          </div>
-          <h3>Secure Payment</h3>
-          <p>Multiple secure payment options, including credit card, PayPal, and Apple Pay.</p>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Categories Section -->
-  <section class="categories container">
-    <h2>Shop by Category</h2>
-    <div class="categories-grid" id="categoriesGrid">
-      <!-- Categories will be loaded here via JavaScript -->
+    <div class="product-tabs">
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="features">Features</button>
+        <button class="tab-btn" data-tab="specifications">Specifications</button>
+        <button class="tab-btn" data-tab="reviews">Customer Reviews</button>
+      </div>
+      
+      <div class="tab-content active" id="featuresTab">
+        <h3>Key Features</h3>
+        <ul class="features-list" id="featuresList">
+          <!-- Features will be added here dynamically -->
+        </ul>
+      </div>
+      
+      <div class="tab-content" id="specificationsTab">
+        <h3>Technical Specifications</h3>
+        <div class="specifications-grid" id="specificationsGrid">
+          <!-- Specifications will be added here dynamically -->
+        </div>
+      </div>
+      
+      <div class="tab-content" id="reviewsTab">
+        <div class="reviews-placeholder">
+          <h3>Customer Reviews Coming Soon</h3>
+          <p>We're working on collecting customer reviews for this product.</p>
+          <div class="rating-summary">
+            <div class="rating-stars" id="summaryStars">
+              <!-- Stars will be added here dynamically -->
+            </div>
+            <span class="rating-text">
+              <span id="summaryRating">4.5</span> out of 5
+            </span>
+            <p class="rating-count">Based on <span id="summaryReviewCount">120</span> reviews</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
 
-  <!-- Special Offer Section -->
-  <section class="special-offer container">
-    <div class="offer-content">
-      <h2>Limited Time Offer</h2>
-      <p>Get up to 30% off on selected laptops and smartphones. Offer valid while supplies last.</p>
-      <a href="products.html" class="btn btn-light">Shop Now <i class="fas fa-arrow-right"></i></a>
-    </div>
-    <div class="offer-image">
-      <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" alt="Person using laptop">
-    </div>
-  </section>
+    <section class="related-products">
+      <h2>Related Products</h2>
+      <div class="products-grid" id="relatedProducts">
+        <!-- Related products will be added here dynamically -->
+      </div>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
@@ -233,5 +303,6 @@
 
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/product-detail.js"></script>
 </body>
 </html>

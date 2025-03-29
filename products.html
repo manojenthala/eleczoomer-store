@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ElecZoomer - Electronics Store</title>
+  <title>Products - ElecZoomer</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -20,7 +20,7 @@
         <nav class="nav-menu">
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">All Products</a></li>
+            <li><a href="products.html" class="active">All Products</a></li>
             <li><a href="products.html?category=Laptops">Laptops</a></li>
             <li><a href="products.html?category=Smartphones">Smartphones</a></li>
             <li><a href="products.html?category=Headphones">Headphones</a></li>
@@ -31,7 +31,7 @@
       <div class="navbar-right">
         <div class="search-bar">
           <i class="fas fa-search"></i>
-          <input type="search" placeholder="Search products...">
+          <input type="search" placeholder="Search products..." id="searchInput">
         </div>
         <div class="cart-icon" id="cartToggle">
           <i class="fas fa-shopping-cart"></i>
@@ -85,88 +85,85 @@
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content container">
-      <h1>Next-Gen Tech, <span>Unbeatable Prices</span></h1>
-      <p>Discover the latest electronics and cutting-edge technology from top brands around the world.</p>
-      <div class="hero-buttons">
-        <a href="products.html" class="btn btn-primary">Shop Now</a>
-        <a href="products.html?category=Laptops" class="btn btn-outline">Explore Deals</a>
+  <!-- Products Page Content -->
+  <main class="container product-page">
+    <div class="product-header">
+      <h1 id="pageTitle">All Products</h1>
+      <button class="filter-button" id="filterToggle">
+        <i class="fas fa-sliders-h"></i> Filters
+      </button>
+    </div>
+
+    <div class="product-container">
+      <!-- Filter Sidebar -->
+      <aside class="filter-sidebar" id="filterSidebar">
+        <div class="filter-header mobile-only">
+          <h3>Filters</h3>
+          <button class="close-filter" id="closeFilter">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="filter-section">
+          <h3>Categories</h3>
+          <div class="filter-options">
+            <div class="filter-option">
+              <input type="radio" id="all-categories" name="category" value="all" checked>
+              <label for="all-categories">All Categories</label>
+            </div>
+            <div class="filter-option">
+              <input type="radio" id="category-laptops" name="category" value="Laptops">
+              <label for="category-laptops">Laptops</label>
+            </div>
+            <div class="filter-option">
+              <input type="radio" id="category-smartphones" name="category" value="Smartphones">
+              <label for="category-smartphones">Smartphones</label>
+            </div>
+            <div class="filter-option">
+              <input type="radio" id="category-headphones" name="category" value="Headphones">
+              <label for="category-headphones">Headphones</label>
+            </div>
+            <div class="filter-option">
+              <input type="radio" id="category-cameras" name="category" value="Cameras">
+              <label for="category-cameras">Cameras</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="filter-section">
+          <h3>Price Range</h3>
+          <div class="price-slider">
+            <div class="price-inputs">
+              <span>$<span id="minPrice">0</span></span>
+              <span>$<span id="maxPrice">2000</span></span>
+            </div>
+            <input type="range" id="priceMin" min="0" max="2000" value="0" class="slider">
+            <input type="range" id="priceMax" min="0" max="2000" value="2000" class="slider">
+          </div>
+        </div>
+        
+        <button class="btn btn-outline" id="clearFilters">Clear All Filters</button>
+      </aside>
+
+      <!-- Products Grid -->
+      <div class="products-container">
+        <div class="active-filters" id="activeFilters">
+          <!-- Active filters will be displayed here -->
+        </div>
+        <div class="products-count">
+          <p>Showing <span id="productsCount">0</span> products</p>
+        </div>
+        <div class="products-grid" id="productsGrid">
+          <!-- Products will be loaded here via JavaScript -->
+        </div>
+        <div class="no-products" id="noProducts">
+          <h3>No products found</h3>
+          <p>Try adjusting your filters or search term to find what you're looking for.</p>
+          <button class="btn btn-outline" id="resetFilters">Clear All Filters</button>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- Featured Products Section -->
-  <section class="featured-products container">
-    <div class="section-header">
-      <div>
-        <h2>Featured Products</h2>
-        <p>Explore our handpicked selection of premium electronics, chosen for their exceptional performance and value.</p>
-      </div>
-      <a href="products.html" class="btn btn-outline">View All <i class="fas fa-arrow-right"></i></a>
-    </div>
-    <div class="products-grid" id="featuredProducts">
-      <!-- Products will be loaded here via JavaScript -->
-    </div>
-  </section>
-
-  <!-- Why Shop With Us Section -->
-  <section class="why-shop-section">
-    <div class="container">
-      <h2>Why Shop With Us</h2>
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <div class="benefit-icon">
-            <i class="fas fa-truck"></i>
-          </div>
-          <h3>Free Shipping</h3>
-          <p>On all orders over $50. International shipping available on select products.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <h3>Warranty Protection</h3>
-          <p>All products come with a minimum 1-year warranty, with extended options available.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">
-            <i class="fas fa-box"></i>
-          </div>
-          <h3>30-Day Returns</h3>
-          <p>Not satisfied? Return any product within 30 days for a full refund, no questions asked.</p>
-        </div>
-        <div class="benefit-card">
-          <div class="benefit-icon">
-            <i class="fas fa-credit-card"></i>
-          </div>
-          <h3>Secure Payment</h3>
-          <p>Multiple secure payment options, including credit card, PayPal, and Apple Pay.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Categories Section -->
-  <section class="categories container">
-    <h2>Shop by Category</h2>
-    <div class="categories-grid" id="categoriesGrid">
-      <!-- Categories will be loaded here via JavaScript -->
-    </div>
-  </section>
-
-  <!-- Special Offer Section -->
-  <section class="special-offer container">
-    <div class="offer-content">
-      <h2>Limited Time Offer</h2>
-      <p>Get up to 30% off on selected laptops and smartphones. Offer valid while supplies last.</p>
-      <a href="products.html" class="btn btn-light">Shop Now <i class="fas fa-arrow-right"></i></a>
-    </div>
-    <div class="offer-image">
-      <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80" alt="Person using laptop">
-    </div>
-  </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
@@ -233,5 +230,6 @@
 
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
 </body>
 </html>
