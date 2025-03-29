@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ChevronRight, ShoppingCart, Heart, Share, Check, Truck, RefreshCw, ShieldCheck, Star } from "lucide-react";
+import { ChevronRight, ShoppingCart, Heart, Share, Check, Truck, RefreshCw, ShieldCheck, Star, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Navbar from "@/components/Navbar";
